@@ -6,6 +6,7 @@ import Notiflix from 'notiflix';
 const refs = {
   form: document.querySelector('#search-form'),
   input: document.querySelector('input[name="searchQuery"]'),
+  gallery: document.querySelector('.gallery'),
   submitBtn: document.querySelector('.submitBtn'),
   loadMoreBtn: document.querySelector('.load-more'),
 }
@@ -21,13 +22,13 @@ refs.loadMoreBtn.classList.add('is-hidden')
 function onFormSubmit(event) {
   event.preventDefault();
   search = event.target.searchQuery.value.trim();
-
+  refs.gallery.innerHTML = '';
 
   if (search === '') {
     return notificationOfWrongSearch()
   }
 
-  dataRequest(search)
+  dataRequest(search, page)
     .then(data => {
       if (data.hits.length === 0) {
         notificationOfWrongSearch()
@@ -43,7 +44,6 @@ function onFormSubmit(event) {
     .finally(() => {
       refs.form.reset()
     })
-
 }
 
 function loadMore() {
