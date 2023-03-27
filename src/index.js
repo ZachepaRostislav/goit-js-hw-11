@@ -23,10 +23,11 @@ function onFormSubmit(event) {
   event.preventDefault();
   search = event.target.searchQuery.value.trim();
   refs.gallery.innerHTML = '';
-
+  page = 1
   if (search === '') {
     return notificationOfWrongSearch()
   }
+
 
   dataRequest(search, page)
     .then(data => {
