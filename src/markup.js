@@ -13,7 +13,7 @@ export function markup(images) {
   const markupImg = images.map(image => {
     const {
       webformatURL,
-      largeimageURL,
+      largeImageURL,
       tags,
       likes,
       views,
@@ -21,7 +21,7 @@ export function markup(images) {
       downloads,
     } = image;
     return `
-            <a class="gallery-link" href="${largeimageURL}">    
+            <a class="gallery-link" href="${largeImageURL}">    
                 <div class="gallery-item">
                     <img class="gallery-item__image" src="${webformatURL}" alt="${tags}" loading="lazy" />
                     <div class="info">
